@@ -11,6 +11,11 @@
 
 local S = manipulus.S
 
+-- Calcula valor de pontos de um novo demarcador para um determinado numero de demarcadores ja existentes um grupo
+local calcular_pontos = function(n)
+	return math.floor((0.8^n)*10)
+end
+
 -- Demarcador de territorio
 minetest.register_node("manipulus:demarcador", {
 	description = S("Demarcador de Territorio de Grupo"),
@@ -83,6 +88,8 @@ minetest.register_node("manipulus:demarcador", {
 		meta:set_string("infotext", S("Territorio de @1", grupo))
 		meta:set_string("manipulus_grupo", grupo)
 		meta:set_string("manipulus_grupo_numero", manipulus.bd.pegar("grupo_"..grupo, "numero"))
+		manipulus.add_pontos_grupo(grupo, calcular_pontos(manipulus.get_demarcador_grupo(grupo))) -- conta o valor desse novo
+		manipulus.add_demarcador_grupo(grupo) -- coloca o novo
 	end,
 	
 	can_dig = function(pos, player)
@@ -108,6 +115,18 @@ minetest.register_node("manipulus:demarcador", {
 	on_punch = function(pos, node, puncher)
 		if manipulus.check_demarcador(pos) == false then return end
 		manipulus.display_territorio({x=pos.x, y=pos.y, z=pos.z}, 5, "manipulus:display_territorio")
+	end,
+	
+	on_destruct = function(pos)
+		local meta = minetest.get_meta(pos)
+		local grupo = meta:get_string("manipulus_grupo")
+		if manipulus.existe_grupo(grupo)
+			and manipulus.bd.verif("grupo_"..grupo, "numero") == true
+			and meta:get_string("manipulus_grupo_numero") == tostring(manipulus.bd.pegar("grupo_"..grupo, "numero")) 
+		then
+			manipulus.rem_pontos_grupo(grupo, calcular_pontos(manipulus.get_demarcador_grupo(grupo)))
+			manipulus.rem_demarcador_grupo(grupo)
+		end
 	end,
 })
 
@@ -351,11 +370,11 @@ manipulus.check_demarcador = function(pos)
 	local meta = minetest.get_meta(pos)
 	local grupo = meta:get_string("manipulus_grupo")
 	if manipulus.existe_grupo(grupo)
+		and manipulus.bd.verif("grupo_"..grupo, "numero") == true
 		and meta:get_string("manipulus_grupo_numero") == tostring(manipulus.bd.pegar("grupo_"..grupo, "numero")) 
 	then
 		return true
 	else
-		minetest.chat_send_all(dump(meta:get_string("manipulus_grupo_numero")).."~="..dump(tostring(manipulus.bd.pegar("grupo_"..grupo, "numero"))))
 		minetest.remove_node(pos)
 		-- Remover marcadores de subareas presentes
 		for _,p in ipairs(minetest.find_nodes_in_area(

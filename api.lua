@@ -330,7 +330,6 @@ manipulus.acessar_menu = function(name, dados)
 		
 		local formspec_data = get_formspec_data(name)
 		if formspec_data == nil then formspec_data = {} end
-		
 		-- Lista de membros
 		local membros = ""
 		local membro_selecionado = ""
@@ -595,7 +594,7 @@ manipulus.acessar_menu = function(name, dados)
 end
 
 -- Receptor de retornos do menu
-minetest.register_on_player_receive_fields(function(player, formname, fields)
+manipulus.register_on_player_receive_fields = function(player, formname, fields)
 	
 	if formname == "manipulus:menu_pesquisa" then
 		
@@ -1184,7 +1183,8 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 			return
 		end
 	end
-end)
+end
+minetest.register_on_player_receive_fields(manipulus.register_on_player_receive_fields)
 
 -- Comando basico
 minetest.register_chatcommand("grupo", {
@@ -1195,4 +1195,70 @@ minetest.register_chatcommand("grupo", {
 	end,
 })
 
+-- Registrar guia iniciam em sfinv
+if sfinv then
+	sfinv.register_page("manipulus:grupo", {
+		title = "Grupo",
+		get = function(self, player, context)
+			local formspec = "label[0,0;"..S("Menu de Grupos").."]"
+				.."label[0,0.5;"..S("Ranking").."]"
+				.."button[6,0;2,1;pesquisar;"..S("Pesquisar").."]"
+			
+			-- Ranking
+			local rank = manipulus.get_rank()
+			-- Imagens
+			formspec = formspec .. "background[0.1,1.45;7.5,1.5;manipulus_fundo_rank_inv.png]"
+				.."background[7,2.3;0.8,0.8;manipulus_rank3.png]"
+				.."background[7.2,1.8;0.9,0.9;manipulus_rank2.png]"
+				.."background[6.8,1.2;1,1;manipulus_rank1.png]"
+			formspec = formspec .."label[0.6,0.9;"..S("Pontos").."]".."label[2,0.9;"..S("Grupo").."]"
+			for x=1, 3 do
+				local w = (0.9+(0.5*x))
+				formspec = formspec .."label[0.6,"..w..";"..rank[tostring(x)].pontos.."]"
+					.."label[2.1,"..w..";"..rank[tostring(x)].grupo.."]"
+				
+				if manipulus.existe_grupo(rank[tostring(x)].grupo) == true then
+					formspec = formspec .. "image_button[0,"..(w-0.05)..";0.7,0.7;default_book.png;ver_"..x..";]"
+				end
+			end
+			
+			-- Acessar proprio grupo
+			local grupo = manipulus.get_player_grupo(player:get_player_name())
+			if grupo ~= nil then
+				formspec = formspec.."button[0,3.7;8,1;grupo;"..grupo.."]"
+			end
+			
+			return sfinv.make_formspec(player, context, formspec, true)
+		end,
+		on_player_receive_fields = function(self, player, context, fields)
+			if fields.grupo then
+				if manipulus.get_player_grupo(player:get_player_name()) ~= nil then
+					manipulus.acessar_menu(player:get_player_name(), {grupo={}})
+					return 
+				else
+					manipulus.acessar_menu(player:get_player_name(), {pesquisa={}})
+					return
+				end
+			elseif fields.pesquisar then
+				manipulus.acessar_menu(player:get_player_name(), {pesquisa={}})
+				return 
+			end
+			for x=1, 3 do
+				if fields["ver_"..x] then
+					local grupo = manipulus.get_rank()[tostring(x)].grupo
+					-- Encaminha para efeito de pesquisa comum
+					if manipulus.existe_grupo(grupo) == true then
+						return manipulus.register_on_player_receive_fields(
+							player, 
+							"manipulus:menu_pesquisa", 
+							{pesquisa=grupo, pesquisar = true}
+						)
+					end
+					manipulus.acessar_menu(player:get_player_name(), {pesquisa={}})
+					return 
+				end
+			end
+		end,
+	})
+end
 

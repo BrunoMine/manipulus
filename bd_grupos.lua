@@ -36,6 +36,9 @@ manipulus.criar_grupo = function(grupo, def, fundador)
 	manipulus.add_grupos_criados()
 	local n = manipulus.get_grupos_criados()
 	
+	-- Demarcadores
+	manipulus.bd.salvar("grupo_"..grupo, "demarcadores", 0)
+	
 	-- Numero do grupo
 	manipulus.bd.salvar("grupo_"..grupo, "numero", n)
 	
@@ -64,6 +67,7 @@ manipulus.criar_grupo = function(grupo, def, fundador)
 	
 	manipulus.add_membro(grupo, fundador)
 	manipulus.set_player_grupo(fundador, grupo)
+	
 end
 
 -- Pegar dados de um grupo
@@ -90,6 +94,9 @@ manipulus.get_grupo = function(grupo)
 	
 	-- Pontos do grupo
 	dados.pontos = manipulus.bd.pegar("grupo_"..grupo, "pontos")
+	
+	-- Demarcadores
+	dados.demarcadores = manipulus.bd.pegar("grupo_"..grupo, "demarcadores")
 	
 	return dados
 end
@@ -122,6 +129,11 @@ end
 
 -- Adicionar membro
 manipulus.add_membro = function(grupo, membro)
+	if sfinv and minetest.get_player_by_name(membro) ~= nil then
+		local player = minetest.get_player_by_name(membro)
+		sfinv.set_player_inventory_formspec(player)
+		sfinv.set_page(player, sfinv.get_homepage_name(player))
+	end
 	local membros = manipulus.bd.pegar("grupo_"..grupo, "membros")
 	membros[membro] = {}
 	manipulus.bd.salvar("grupo_"..grupo, "membros", membros)
@@ -132,7 +144,11 @@ end
 
 -- Remover membro
 manipulus.rem_membro = function(grupo, membro)
-	
+	if sfinv and minetest.get_player_by_name(membro) ~= nil then
+		local player = minetest.get_player_by_name(membro)
+		sfinv.set_player_inventory_formspec(player)
+		sfinv.set_page(player, sfinv.get_homepage_name(player))
+	end
 	-- Se for o fundador, desfaz o grupo
 	if manipulus.get_grupo(grupo).fundador == membro then
 		manipulus.deletar_grupo(grupo)
@@ -281,7 +297,7 @@ if manipulus.bd.verif("Ranking", "pontos") == false then
 	manipulus.bd.salvar("Ranking", "pontos", rank)
 end
 
--- Estatisticas
+-- Estatisticas Gerais
 if manipulus.bd.verif("Estatisticas", "grupos_criados") == false then
 	manipulus.bd.salvar("Estatisticas", "grupos_criados", 0)
 end
@@ -296,3 +312,23 @@ manipulus.add_grupos_criados = function()
 	local n = manipulus.bd.pegar("Estatisticas", "grupos_criados")
 	return manipulus.bd.salvar("Estatisticas", "grupos_criados", (n+1))
 end
+
+-- Estatisticas de grupo
+-- Pegar numero de demarcadores
+manipulus.get_demarcador_grupo = function(grupo)
+	return manipulus.bd.pegar("grupo_"..grupo, "demarcadores")
+end
+
+-- Somar 1 ao numero de demarcadores
+manipulus.add_demarcador_grupo = function(grupo)
+	local n = manipulus.bd.pegar("grupo_"..grupo, "demarcadores")
+	return manipulus.bd.salvar("grupo_"..grupo, "demarcadores", (n+1))
+end
+
+-- subtrai 1 ao numero de demarcadores
+manipulus.rem_demarcador_grupo = function(grupo)
+	local n = manipulus.bd.pegar("grupo_"..grupo, "demarcadores")
+	return manipulus.bd.salvar("grupo_"..grupo, "demarcadores", (n-1))
+end
+
+
