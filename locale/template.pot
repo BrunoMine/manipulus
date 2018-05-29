@@ -1,0 +1,335 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-29 14:57-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: api.lua
+msgid "Fundador"
+msgstr ""
+
+#: api.lua
+msgid "Lider"
+msgstr ""
+
+#: api.lua
+msgid "Apenas palavras com 30 caracteres de A-Z"
+msgstr ""
+
+#: api.lua
+msgid "Nome de grupo '@1' invalido"
+msgstr ""
+
+#: api.lua
+msgid "Tenha certeza do que vai fazer"
+msgstr ""
+
+#: api.lua
+msgid ""
+"Ao abandonar @1 voce so vai poder voltar a participar se o recrutamento "
+"estiver aberto"
+msgstr ""
+
+#: api.lua
+msgid "Todos os membros serao retirados e o grupo deixara de existir"
+msgstr ""
+
+#: api.lua
+msgid "Limite de @1 caracteres para textos descritivos"
+msgstr ""
+
+#: api.lua
+msgid ""
+"Evite usar caracteres especiais devido a possiveis erros de compatibilidade "
+"entre diferentes computadores"
+msgstr ""
+
+#: api.lua
+msgid "Nenhum texto descritivo escrito"
+msgstr ""
+
+#: api.lua
+msgid "Menu de Grupos"
+msgstr ""
+
+#: api.lua
+msgid "Pesquisar por Grupo"
+msgstr ""
+
+#: api.lua
+msgid "Pesquisar"
+msgstr ""
+
+#: api.lua
+msgid "Sair"
+msgstr ""
+
+#: api.lua
+msgid "Ranking"
+msgstr ""
+
+#: api.lua
+msgid "Pontos"
+msgstr ""
+
+#: api.lua
+msgid "Grupo"
+msgstr ""
+
+#: api.lua
+msgid "Fundar novo grupo"
+msgstr ""
+
+#: api.lua
+msgid "Fundar grupo"
+msgstr ""
+
+#: api.lua
+msgid "Nome do novo grupo"
+msgstr ""
+
+#: api.lua
+msgid "jamais pode alterar"
+msgstr ""
+
+#: api.lua
+msgid "Texto descritivo"
+msgstr ""
+
+#: api.lua
+msgid "Fundar"
+msgstr ""
+
+#: api.lua
+msgid "Tornar Lider"
+msgstr ""
+
+#: api.lua
+msgid "Desfazer Lider"
+msgstr ""
+
+#: api.lua
+msgid "pontos"
+msgstr ""
+
+#: api.lua
+msgid "Descritivo"
+msgstr ""
+
+#: api.lua
+msgid "Editar"
+msgstr ""
+
+#: api.lua
+msgid "Desfazer"
+msgstr ""
+
+#: api.lua
+msgid "Membros"
+msgstr ""
+
+#: api.lua
+msgid "Recrutamento"
+msgstr ""
+
+#: api.lua
+msgid "Tornar fundador"
+msgstr ""
+
+#: api.lua
+msgid "Expulsar"
+msgstr ""
+
+#: api.lua
+msgid "Deixar de ser lider"
+msgstr ""
+
+#: api.lua
+msgid "Abandonar"
+msgstr ""
+
+#: api.lua
+msgid "Abandonar @1"
+msgstr ""
+
+#: api.lua
+msgid "Cancelar"
+msgstr ""
+
+#: api.lua
+msgid "Tem certeza"
+msgstr ""
+
+#: api.lua
+msgid "Editar texto descritivo"
+msgstr ""
+
+#: api.lua
+msgid "Confirmar"
+msgstr ""
+
+#: api.lua
+msgid "Nome '@1' invalido"
+msgstr ""
+
+#: api.lua
+msgid "Grupo '@1' inexistente"
+msgstr ""
+
+#: api.lua
+msgid "Grupo lotado"
+msgstr ""
+
+#: api.lua
+msgid "Participar"
+msgstr ""
+
+#: api.lua
+msgid "Recrutamento fechado"
+msgstr ""
+
+#: api.lua
+msgid "Recrutamento fechado para @1"
+msgstr ""
+
+#: api.lua
+msgid "Grupo '@1' lotado"
+msgstr ""
+
+#: api.lua
+msgid "Membro '@1' selecionado"
+msgstr ""
+
+#: api.lua
+msgid "Precisar ser lider ou fundador para realizar isso"
+msgstr ""
+
+#: api.lua
+msgid "Selecione um membro da lista"
+msgstr ""
+
+#: api.lua
+msgid "Jogador '@1' saiu do grupo"
+msgstr ""
+
+#: api.lua
+msgid "Nao podes expulsar a si mesmo"
+msgstr ""
+
+#: api.lua
+msgid "Apenas o fundador pode expulsar lideres"
+msgstr ""
+
+#: api.lua
+msgid "Jogador '@1' foi expulso"
+msgstr ""
+
+#: api.lua
+msgid "Recrutamento aberto"
+msgstr ""
+
+#: api.lua
+msgid "Agora qualquer jogador pode participar do grupo"
+msgstr ""
+
+#: api.lua
+msgid "Agora nenhum jogador pode participar do grupo"
+msgstr ""
+
+#: api.lua
+msgid "Apenas o fundador pode realizar isso"
+msgstr ""
+
+#: api.lua
+msgid "Nao podes tornar lider a si mesmo"
+msgstr ""
+
+#: api.lua
+msgid "Membro '@1' ja e lider"
+msgstr ""
+
+#: api.lua
+msgid "Membro '@1' foi promovido a lider"
+msgstr ""
+
+#: api.lua
+msgid "Nao podes desfazerse de ser lider"
+msgstr ""
+
+#: api.lua
+msgid "Membro '@1' ja deixou lider"
+msgstr ""
+
+#: api.lua
+msgid "Membro '@1' deixou de ser lider"
+msgstr ""
+
+#: api.lua
+msgid "Ja es o atual fundador"
+msgstr ""
+
+#: api.lua
+msgid "Nenhum texto escrito"
+msgstr ""
+
+#: api.lua
+msgid "Limite de @1 caracteres excedido"
+msgstr ""
+
+#: api.lua
+msgid "Texto descritivo editado"
+msgstr ""
+
+#: demarcadores.lua
+msgid "Demarcador de Territorio de Grupo"
+msgstr ""
+
+#: demarcadores.lua
+msgid "Precisar ser lider ou fundador de um grupo para demarcar territorio"
+msgstr ""
+
+#: demarcadores.lua
+msgid "Area protegida nas proximidades"
+msgstr ""
+
+#: demarcadores.lua
+msgid "Territorio de @1"
+msgstr ""
+
+#: demarcadores.lua
+msgid "Apenas fundador ou lider pode remover"
+msgstr ""
+
+#: demarcadores.lua
+msgid "Demarcador de subarea para membros de grupo"
+msgstr ""
+
+#: demarcadores.lua
+msgid "Precisar ser lider ou fundador de um grupo para demarcar subareas"
+msgstr ""
+
+#: demarcadores.lua
+msgid "Bata aqui para definir dono da subarea"
+msgstr ""
+
+#: demarcadores.lua
+msgid "Precisa ser membro para ser dono da subarea"
+msgstr ""
+
+#: demarcadores.lua
+msgid ""
+"Como membro deves construir apenas na tua subarea designada pelos lideres"
+msgstr ""
