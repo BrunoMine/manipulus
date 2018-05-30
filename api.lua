@@ -700,7 +700,7 @@ manipulus.register_on_player_receive_fields = function(player, formname, fields)
 			else
 				if dados_grupo.recrutamento == true then
 					dados.pesquisa.formspec = dados.pesquisa.formspec
-						.."textarea[5.75,6.2;4.5,1.1;;"..S("Recrutamento fechado")..";]"
+						.."textarea[5.75,6.2;4.5,1.1;;"..S("Recrutamento aberto")..";]"
 				else
 					dados.pesquisa.formspec = dados.pesquisa.formspec
 						.."textarea[5.75,6.2;4.5,1.1;;"..S("Recrutamento fechado")..";]"
