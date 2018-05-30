@@ -1,0 +1,15 @@
+{
+    "name": "manipulus",
+    "description": "Adiciona grupos de jogadores ao Minetest",
+    "keywords": [
+        "manipulus"
+    ],
+    "homepage": "https://github.com/BrunoMine/manipulus",
+    "forum": "https://forum.minetest.net/viewtopic.php?t=1",
+    "screenshots": [
+        "https://raw.githubusercontent.com/BrunoMine/manipulus/master/screenshot.png"
+    ],
+    "authors": [
+        "BrunoMine"
+    ]
+}
