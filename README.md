@@ -15,7 +15,7 @@ Esse mod adiciona um sistema de criação de grupos de jogadores.
 * Mod sfinv (opiciontal)
 * Mod protector (opiciontal)
 
-# Licença
+## Licença _(License)_
 Veja LICENSE.txt para informações detalhadas da licença LGPL 3.0
 
 Autores do código fonte
