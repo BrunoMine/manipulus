@@ -1198,7 +1198,7 @@ minetest.register_chatcommand("grupo", {
 -- Registrar guia iniciam em sfinv
 if sfinv then
 	sfinv.register_page("manipulus:grupo", {
-		title = "Grupo",
+		title = S("Grupo"),
 		get = function(self, player, context)
 			local formspec = "label[0,0;"..S("Menu de Grupos").."]"
 				.."label[0,0.5;"..S("Ranking").."]"

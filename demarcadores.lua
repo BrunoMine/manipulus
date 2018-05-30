@@ -129,6 +129,15 @@ minetest.register_node("manipulus:demarcador", {
 		end
 	end,
 })
+-- Receita 
+minetest.register_craft({
+	output = 'manipulus:demarcador',
+	recipe = {
+		{'group:stick', 'default:bronze_ingot', 'group:stick'},
+		{'default:bronze_ingot', 'default:steelblock', 'default:bronze_ingot'},
+		{'group:stick', 'default:bronze_ingot', 'group:stick'},
+	}
+})
 
 -- Demarcador de subarea
 minetest.register_node("manipulus:subarea", {
@@ -228,6 +237,16 @@ minetest.register_node("manipulus:subarea", {
 		return false
 	end,
 })
+-- Receita 
+minetest.register_craft({
+	output = 'manipulus:subarea',
+	recipe = {
+		{'group:stick', 'default:steel_ingot', 'group:stick'},
+		{'default:steel_ingot', 'group:wood', 'default:steel_ingot'},
+		{'group:stick', 'default:steel_ingot', 'group:stick'},
+	}
+})
+
 
 -- Verifica se a coordenada 'pos' é protegida contra o jogador 'name'
 manipulus.is_protected = function(pos, name)

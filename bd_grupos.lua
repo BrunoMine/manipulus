@@ -129,26 +129,21 @@ end
 
 -- Adicionar membro
 manipulus.add_membro = function(grupo, membro)
-	if sfinv and minetest.get_player_by_name(membro) ~= nil then
-		local player = minetest.get_player_by_name(membro)
-		sfinv.set_player_inventory_formspec(player)
-		sfinv.set_page(player, sfinv.get_homepage_name(player))
-	end
+	
 	local membros = manipulus.bd.pegar("grupo_"..grupo, "membros")
 	membros[membro] = {}
 	manipulus.bd.salvar("grupo_"..grupo, "membros", membros)
 	manipulus.set_player_grupo(membro, grupo)
 	manipulus.bd.salvar("grupo_"..grupo, "qtd_membros", manipulus.bd.pegar("grupo_"..grupo, "qtd_membros")+1)
 	manipulus.add_pontos_grupo(grupo, 1)
+	if sfinv and minetest.get_player_by_name(membro) ~= nil then
+		sfinv.set_player_inventory_formspec(minetest.get_player_by_name(membro))
+	end
 end
 
 -- Remover membro
 manipulus.rem_membro = function(grupo, membro)
-	if sfinv and minetest.get_player_by_name(membro) ~= nil then
-		local player = minetest.get_player_by_name(membro)
-		sfinv.set_player_inventory_formspec(player)
-		sfinv.set_page(player, sfinv.get_homepage_name(player))
-	end
+	
 	-- Se for o fundador, desfaz o grupo
 	if manipulus.get_grupo(grupo).fundador == membro then
 		manipulus.deletar_grupo(grupo)
@@ -162,6 +157,9 @@ manipulus.rem_membro = function(grupo, membro)
 		manipulus.rem_lider(grupo, membro)
 		manipulus.reset_player_grupo(membro)
 		manipulus.bd.salvar("grupo_"..grupo, "qtd_membros", manipulus.bd.pegar("grupo_"..grupo, "qtd_membros")-1)
+	end
+	if sfinv and minetest.get_player_by_name(membro) ~= nil then
+		sfinv.set_player_inventory_formspec(minetest.get_player_by_name(membro))
 	end
 end
 
@@ -211,7 +209,7 @@ manipulus.rem_rank = function(grupo)
 	local rank = manipulus.get_rank()
 	for x=1, 10 do
 		if grupo == rank[tostring(x)].grupo then
-			rank[tostring(x)] = {grupo="Colocado "..x, pontos=0}
+			rank[tostring(x)] = {grupo="-"..x.."-", pontos=0}
 			break
 		end
 	end
@@ -283,16 +281,16 @@ end
 -- Certifica de que rank existe
 if manipulus.bd.verif("Ranking", "pontos") == false then
 	rank = {
-		["1"] = {grupo="Colocado 1",pontos=0},
-		["2"] = {grupo="Colocado 2",pontos=0},
-		["3"] = {grupo="Colocado 3",pontos=0},
-		["4"] = {grupo="Colocado 4",pontos=0},
-		["5"] = {grupo="Colocado 5",pontos=0},
-		["6"] = {grupo="Colocado 6",pontos=0},
-		["7"] = {grupo="Colocado 7",pontos=0},
-		["8"] = {grupo="Colocado 8",pontos=0},
-		["9"] = {grupo="Colocado 9",pontos=0},
-		["10"] = {grupo="Colocado 10",pontos=0},
+		["1"] = {grupo="-1-",pontos=0},
+		["2"] = {grupo="-2-",pontos=0},
+		["3"] = {grupo="-3-",pontos=0},
+		["4"] = {grupo="-4-",pontos=0},
+		["5"] = {grupo="-5-",pontos=0},
+		["6"] = {grupo="-6-",pontos=0},
+		["7"] = {grupo="-7-",pontos=0},
+		["8"] = {grupo="-8-",pontos=0},
+		["9"] = {grupo="-9-",pontos=0},
+		["10"] = {grupo="-10-",pontos=0},
 	}
 	manipulus.bd.salvar("Ranking", "pontos", rank)
 end
