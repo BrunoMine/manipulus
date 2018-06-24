@@ -10,7 +10,7 @@ Manipulus v1.0.0
 Esse mod adiciona um sistema de criação de grupos de jogadores.
 
 ## Requisitos _(Requirements)_
-* Minetest 0.5.0
+* Minetest 0.4.16
 * Mod default
 * Mod sfinv (opiciontal)
 * Mod protector (opiciontal)
