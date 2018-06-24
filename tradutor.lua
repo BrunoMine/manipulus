@@ -16,6 +16,10 @@ local modpath = minetest.get_modpath("manipulus")
 manipulus.intllib = {}
 manipulus.intllib.S, manipulus.intllib.NS = dofile(modpath.."/lib/intllib.lua")
 
+-- Configura tradutor opicional
+manipulus.S = manipulus.intllib.S
+manipulus.NS = manipulus.intllib.NS
+
 --
 -- Ajustes devido ao bug de tradutor ler apenas traduzir do ingles
 --
@@ -121,7 +125,13 @@ do
 end
 
 -- Ajuste para repassar termos em ingles
-local s = minetest.get_translator("manipulus")
+local s
+if minetest.get_translator ~= nil then
+	s = minetest.get_translator("manipulus")
+else
+	s = manipulus.intllib.S
+end
+
 manipulus.s = function(...)
 	local args = { ... }
 	if pt_to_en[args[1]] ~= nil then
@@ -131,30 +141,29 @@ manipulus.s = function(...)
 	return s(...)
 end
 
--- Tradução (desativado por enquanto usando sistema para compensar bug de traduções)
--- manipulus.s = minetest.get_translator("manipulus")
-
 -- Marcador e ajustador de strings traduziveis
-manipulus.S = function(...)
-	local args = { ... }
-	if type(args[1]) == "table" then
-		local r = {}
-		for n,a in ipairs(args[1]) do
-			if n ~= 1 then -- Não traduz o primeiro
-				table.insert(r, manipulus.S(a))
-			else
-				table.insert(r, a)
+if minetest.get_translator ~= nil then
+	manipulus.S = function(...)
+		local args = { ... }
+		if type(args[1]) == "table" then
+			local r = {}
+			for n,a in ipairs(args[1]) do
+				if n ~= 1 then -- Não traduz o primeiro
+					table.insert(r, manipulus.S(a))
+				else
+					table.insert(r, a)
+				end
 			end
+			
+			return manipulus.s(unpack(r))
+			
+		elseif type(args[1]) == "string" then
+			-- Não traduz caso faltem argumentos (devido strings ilustrativas)
+			return manipulus.s(...)
+			
+		else
+			return args[1]
 		end
-		
-		return manipulus.s(unpack(r))
-		
-	elseif type(args[1]) == "string" then
-		-- Não traduz caso faltem argumentos (devido strings ilustrativas)
-		return manipulus.s(...)
-		
-	else
-		return args[1]
 	end
 end
 
