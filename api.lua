@@ -1085,6 +1085,8 @@ manipulus.register_on_player_receive_fields = function(player, formname, fields)
 		
 	elseif formname == "manipulus:tornar_fundador" then
 		
+		local dados = {grupo={}}
+		
 		if fields.tornar_fundador then
 			local name = player:get_player_name()
 			local grupo = manipulus.get_player_grupo(name)
@@ -1131,6 +1133,7 @@ manipulus.register_on_player_receive_fields = function(player, formname, fields)
 		if fields.confirmar then
 			local name = player:get_player_name()
 			local grupo = manipulus.get_player_grupo(name)
+			local dados = {}
 			
 			-- Verifica se grupo existe e é membro
 			if grupo == nil then
