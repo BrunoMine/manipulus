@@ -1,4 +1,8 @@
 default
-protector?
-sfinv?
 intllib?
+sfinv?
+hudbars?
+beds?
+farming?
+wool?
+carts?
