@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-29 14:57-0300\n"
+"POT-Creation-Date: 2018-12-26 23:55-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -202,6 +202,18 @@ msgid "Recrutamento fechado"
 msgstr ""
 
 #: api.lua
+msgid "Recrutamento aberto"
+msgstr ""
+
+#: api.lua
+msgid "Precisa atingir nivel @1 para fundar um grupo"
+msgstr ""
+
+#: api.lua
+msgid "Precisa atingir nivel @1 para entrar em um grupo"
+msgstr ""
+
+#: api.lua
 msgid "Recrutamento fechado para @1"
 msgstr ""
 
@@ -235,10 +247,6 @@ msgstr ""
 
 #: api.lua
 msgid "Jogador '@1' foi expulso"
-msgstr ""
-
-#: api.lua
-msgid "Recrutamento aberto"
 msgstr ""
 
 #: api.lua
@@ -301,7 +309,7 @@ msgstr ""
 msgid "Precisar ser lider ou fundador de um grupo para demarcar territorio"
 msgstr ""
 
-#: demarcadores.lua
+#: demarcadores.lua protector.lua
 msgid "Area protegida nas proximidades"
 msgstr ""
 

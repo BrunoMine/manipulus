@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-28 13:26-0300\n"
-"PO-Revision-Date: 2018-05-28 13:28-0300\n"
+"POT-Creation-Date: 2018-05-29 14:57-0300\n"
+"PO-Revision-Date: 2018-05-29 15:05-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -304,6 +304,10 @@ msgstr "Group Territory Claim"
 #: demarcadores.lua
 msgid "Precisar ser lider ou fundador de um grupo para demarcar territorio"
 msgstr "Need to be leader or founder of a group to demarcate a territory"
+
+#: demarcadores.lua
+msgid "Area protegida nas proximidades"
+msgstr "Protected area nearby"
 
 #: demarcadores.lua
 msgid "Territorio de @1"
